@@ -1,95 +1,41 @@
-import Image from "next/image";
+
 import styles from "./page.module.css";
+import Image from 'next/image';
 
-export default function Home() {
+export default function Homepage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
+    <>
+        <nav className={styles.nav}>
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        src="images/kitch-logo-dark-blue.svg"
+        alt="An example image"
+        width={200}
+        height={100}
+      />
+            </nav>
+      <main className={styles.main}>
+        <section className={styles.hero}>
+        <h1 className={styles.header}>Your customers are hungry.
+        <span className={styles.responsiveBreak}> Our software helps you feed them.</span></h1>
+        <p className={styles.subheader}>Running a meal prep business ain’t easy (unless you have <span className={styles.logoSpan}>kitch</span>). Quick menu creation, easy order fulfillment, and a website live in just minutes. Stop wasting hours taking customer orders and grow your business.</p>
+        <a href="/signup" className={styles.button}>Join the waitlist</a>
+        <p className={styles.landerSubtext}>get 1 year of beta pricing!</p>
+        </section>
+        <section className={styles.landerImages}>
             <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+                src="/images/prepped-steak-one.png"
+                alt="An example image"
+                width={670}
+                height={391}
             />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            <Image
+                src="/images/prepped-steak-two.png"
+                alt="An example image"
+                width={670}
+                height={391}
+            />
+        </section>
+     </main>
+    </>
   );
 }
