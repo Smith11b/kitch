@@ -33,6 +33,7 @@ export default function Homepage() {
                 alt="An example image"
                 width={670}
                 height={391}
+                className={styles.imageTwo}
             />
         </section>
      </main>

@@ -15,6 +15,7 @@
    flex-direction: column;
    align-items: center;
    height: 100%;
+   padding: 0 1rem;
   }
 
   .hero {
@@ -31,7 +32,7 @@
     text-align: center;
     max-width: 870px;
     font-family: "Poppins", sans-serif;
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-medium);
     color: var(--secondary-color);
     line-height: 120%;
     margin-bottom: 4%;
@@ -42,7 +43,7 @@
     max-width: 689px;
     text-align: center;
     font-family: Poppins;
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -53,7 +54,7 @@
 .logoSpan {
     color: var(--primary-color);
     font-family: "Poppins", sans-serif;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
@@ -88,10 +89,20 @@
 
 .landerImages {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     align-content: end;
     max-width: 100%;
-    height: 100%
+    height: 100%;
+    width: 100%;
+}
+
+.landerImages img {
+    max-width: 100%; /* Ensure the image does not exceed its container's width */
+    height: auto; /* Maintain the aspect ratio */
+  }
+
+.imageTwo {
+    display: none;
 }
 
 
@@ -104,5 +115,36 @@
   @media (min-width: 768px) {
     .responsiveBreak {
       display: block;
+    }
+
+    .header {
+        text-align: center;
+        max-width: 870px;
+        font-size: var(--font-size-large);
+        line-height: 120%;
+        margin-bottom: 4%;
+    }
+
+    .subheader {
+        font-size: 1rem;
+    }
+
+    .logoSpan {
+        font-size: 1.125rem;
+    }
+
+
+    .landerImages {
+        grid-template-columns: 1fr 1fr;
+        max-width: 50%;
+      }
+
+      .landerImages img {
+        max-width: 100%; /* Ensure the image does not exceed its container's width */
+        height: auto; /* Maintain the aspect ratio */
+      }
+
+    .imageTwo {
+        display: block;
     }
   }
