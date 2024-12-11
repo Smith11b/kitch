@@ -65,7 +65,7 @@
     align-items: center;
     justify-content: center;
     height: 40px;
-    margin-bottom: 1.5%;
+    margin-bottom: 16px;
     position: relative;
     transition: all 0.5s ease;
   }
@@ -135,6 +135,7 @@
   padding-left: 18px;
   font-family: Poppins;
   transition: width 0.5s ease, padding 0.5s ease, border 1s ease;
+  font-size: .75rem;
 }
 
 .submitted .button {
@@ -142,7 +143,11 @@
    right: -90px;
   }
 
-  .invalid .button {
+  .invalid .button  {
+    animation: shake 0.5s; /* Apply shake animation on invalid email */
+  }
+
+  .invalid .emailInput {
     animation: shake 0.5s; /* Apply shake animation on invalid email */
   }
 
@@ -217,6 +222,10 @@
         font-size: 1.125rem;
     }
 
+    .emailInput {
+        font-size: 1rem;
+    }
+
 
     .landerImages {
         grid-template-columns: 1fr 1fr;
@@ -224,8 +233,8 @@
       }
 
       .landerImages img {
-        max-width: 100%; /* Ensure the image does not exceed its container's width */
-        height: auto; /* Maintain the aspect ratio */
+        max-width: 100%;
+        height: auto;
       }
 
     .imageTwo {
@@ -241,5 +250,6 @@
 
     .emailInput{
        left:  -16px;
+
     }
   }
