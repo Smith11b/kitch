@@ -143,7 +143,11 @@
    right: -90px;
   }
 
-  .invalid .button {
+  .invalid .button  {
+    animation: shake 0.5s; /* Apply shake animation on invalid email */
+  }
+
+  .invalid .emailInput {
     animation: shake 0.5s; /* Apply shake animation on invalid email */
   }
 
@@ -229,8 +233,8 @@
       }
 
       .landerImages img {
-        max-width: 100%; /* Ensure the image does not exceed its container's width */
-        height: auto; /* Maintain the aspect ratio */
+        max-width: 100%;
+        height: auto;
       }
 
     .imageTwo {
