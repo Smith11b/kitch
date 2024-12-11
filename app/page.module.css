@@ -61,12 +61,13 @@
 }
 
 .cta {
-
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 40px;
     margin-bottom: 1.5%;
-;
-}
+    position: relative;
+  }
 
 .button {
     position: absolute;
@@ -88,22 +89,27 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5%;
-    right: -8px;
+    right: 55px;
     width: 35vw;
-    max-width: 160px;
+    max-width: 180px;
 }
 
 .emailInput{
     position: absolute;
-    left: 0px;
-    border: 1px solid var(--primary-color);
+    left: -65px;
+    border: 2px solid var(--primary-color);
     border-radius: .5rem;
     height: 40px;
     width: 40vw;
-    max-width: 200px;
+    max-width: 300px;
     padding-left: 18px;
+    font-family: Poppins;
 }
 
+.emailInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
 
 .landerSubtext {
     color: var(--primary-color);
@@ -157,6 +163,10 @@
     }
 
     .logoSpan {
+        font-size: 1rem;
+    }
+
+    .button {
         font-size: 1.125rem;
     }
 
@@ -173,5 +183,16 @@
 
     .imageTwo {
         display: block;
+    }
+  }
+
+  @media (max-width: 600px) {
+
+    .button{
+        right: 8px;
+    }
+
+    .emailInput{
+       left:  -16px;
     }
   }
