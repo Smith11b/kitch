@@ -106,7 +106,7 @@
     font-weight: 500;
     line-height: normal;
     padding: 1.75rem 1rem;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     border: none;
     cursor: pointer;
     text-decoration: none;
@@ -251,5 +251,11 @@
     .emailInput{
        left:  -16px;
 
+    }
+
+    .submitted .button {
+        right: -95px;
+        width: 50vw;
+        max-width: 290px;
     }
   }
