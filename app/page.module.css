@@ -81,6 +81,19 @@
       transform: translateY(5px); /* Move slightly up */
     }
   }
+
+  @keyframes shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+      transform: translateX(-10px);
+    }
+    20%, 40%, 60%, 80% {
+      transform: translateX(10px);
+    }
+  }
+
 .button {
     position: absolute;
     z-index: 5;
@@ -127,6 +140,10 @@
 .submitted .button {
    font-size: .75rem;
    right: -90px;
+  }
+
+  .invalid .button {
+    animation: shake 0.5s; /* Apply shake animation on invalid email */
   }
 
   .submitted .emailInput {
