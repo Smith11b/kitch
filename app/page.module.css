@@ -65,7 +65,7 @@
     align-items: center;
     justify-content: center;
     height: 40px;
-    margin-bottom: 1.5%;
+    margin-bottom: 16px;
     position: relative;
     transition: all 0.5s ease;
   }
@@ -135,6 +135,7 @@
   padding-left: 18px;
   font-family: Poppins;
   transition: width 0.5s ease, padding 0.5s ease, border 1s ease;
+  font-size: .75rem;
 }
 
 .submitted .button {
@@ -217,6 +218,10 @@
         font-size: 1.125rem;
     }
 
+    .emailInput {
+        font-size: 1rem;
+    }
+
 
     .landerImages {
         grid-template-columns: 1fr 1fr;
@@ -241,5 +246,6 @@
 
     .emailInput{
        left:  -16px;
+
     }
   }
