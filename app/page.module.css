@@ -5,7 +5,7 @@
     justify-items: center;
     border-bottom: 4px solid var(--primary-color);
     padding-top: 3%;
-    padding-bottom: .5%;
+    padding-bottom: .7%;
 }
 
 
@@ -65,7 +65,7 @@
     align-items: center;
     justify-content: center;
     height: 40px;
-    margin-bottom: 1.5%;
+    margin-bottom: 16px;
     position: relative;
     transition: all 0.5s ease;
   }
@@ -105,8 +105,8 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
+    padding: 1.75rem 1rem;
+    border-radius: 0.5rem;
     border: none;
     cursor: pointer;
     text-decoration: none;
@@ -129,12 +129,13 @@
   left: -65px;
   border: 2px solid var(--primary-color);
   border-radius: .5rem;
-  height: 40px;
+  height: 56px;
   width: 40vw;
   max-width: 300px;
   padding-left: 18px;
   font-family: Poppins;
   transition: width 0.5s ease, padding 0.5s ease, border 1s ease;
+  font-size: .75rem;
 }
 
 .submitted .button {
@@ -142,7 +143,11 @@
    right: -90px;
   }
 
-  .invalid .button {
+  .invalid .button  {
+    animation: shake 0.5s; /* Apply shake animation on invalid email */
+  }
+
+  .invalid .emailInput {
     animation: shake 0.5s; /* Apply shake animation on invalid email */
   }
 
@@ -217,6 +222,10 @@
         font-size: 1.125rem;
     }
 
+    .emailInput {
+        font-size: 1rem;
+    }
+
 
     .landerImages {
         grid-template-columns: 1fr 1fr;
@@ -224,8 +233,8 @@
       }
 
       .landerImages img {
-        max-width: 100%; /* Ensure the image does not exceed its container's width */
-        height: auto; /* Maintain the aspect ratio */
+        max-width: 100%;
+        height: auto;
       }
 
     .imageTwo {
@@ -235,11 +244,37 @@
 
   @media (max-width: 600px) {
 
+    .nav {
+        padding-top: 5%;
+        padding-bottom: 4%;
+    }
+
+    .hero {
+        padding-top: 10%;
+    }
+
+    .header {
+        margin-bottom: 6%;
+    }
+
+    .subheader {
+        margin-bottom: 8%;
+    }
+
     .button{
-        right: 8px;
+        right: 38px;
     }
 
     .emailInput{
-       left:  -16px;
+       left:  -50px;
+         width: 56vw;
+         border-radius: 0 0.5rem .5rem 0;
+
+    }
+
+    .submitted .button {
+        right: -95px;
+        width: 50vw;
+        max-width: 290px;
     }
   }

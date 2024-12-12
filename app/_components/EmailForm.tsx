@@ -51,7 +51,7 @@ export default function EmailForm() {
     <div className={`${styles.cta} ${submitted ? styles.submitted : ''} ${invalid ? styles.invalid : ''}`}>
       <a
         href="/signup"
-        className={`${styles.button} ${submitted ? styles.instantFontSizeChange : ''}`}
+        className={`${styles.button}` }
         onClick={handleLinkClick}
       >
         {submitted ? 'Thanks for joining us!' : invalid ? 'Invalid email' : 'Join the waitlist'}
@@ -60,7 +60,7 @@ export default function EmailForm() {
         <input
           type="email"
           placeholder="Enter your email"
-          className={styles.emailInput}
+          className={`${styles.emailInput} ${invalid ? styles.invalid : ''}`}
           value={email}
           onChange={handleEmailChange}
           required
