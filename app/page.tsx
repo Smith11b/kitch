@@ -11,8 +11,8 @@ export default function Homepage() {
                 <Image
                     src="images/kitch-logo-dark-blue.svg"
                     alt="An example image"
-                    width={200}
-                    height={100}
+                    width={180}
+                    height={50}
                 />
             </nav>
             <main className={styles.main}>
