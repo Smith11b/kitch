@@ -244,12 +244,30 @@
 
   @media (max-width: 600px) {
 
+    .nav {
+        padding-top: 5%;
+        padding-bottom: 4%;
+    }
+
+    .hero {
+        padding-top: 10%;
+    }
+
+    .header {
+        margin-bottom: 6%;
+    }
+
+    .subheader {
+        margin-bottom: 8%;
+    }
+
     .button{
-        right: 8px;
+        right: 40px;
     }
 
     .emailInput{
-       left:  -16px;
+       left:  -50px;
+         width: 56vw;
 
     }
 
