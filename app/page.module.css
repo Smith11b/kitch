@@ -262,12 +262,13 @@
     }
 
     .button{
-        right: 40px;
+        right: 38px;
     }
 
     .emailInput{
        left:  -50px;
          width: 56vw;
+         border-radius: 0 0.5rem .5rem 0;
 
     }
 
