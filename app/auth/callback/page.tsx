@@ -29,7 +29,7 @@ export default function GoogleCallbackPage() {
         }),
       });
 
-      router.replace('/dashboard');
+      router.push('/dashboard');
     }
     handleAuthCallback();
   }, [router]);
