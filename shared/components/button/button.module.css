@@ -1,0 +1,52 @@
+.Button {
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+
+.Primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.Primary:hover {
+    background-color: #d3005f;
+}
+
+.Primary:active {
+    background-color: #b20052;
+}
+
+.disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.Secondary {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+}
+
+.Secondary:hover {
+    background-color: #0b1f2b;
+}
+
+.Secondary:active {
+    background-color: #0a1d28;
+}
+
+.Google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+}
