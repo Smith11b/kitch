@@ -1,0 +1,28 @@
+.logo {
+    margin-bottom: 50px;
+}
+
+.loginContainer {
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+  color: var(--secondary-color);
+
+}
+
+
+
+.signUpText {
+    margin-top: 20px;
+}
+
+.signupLink {
+    color: var(--primary-color);
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 500;
+}
