@@ -8,5 +8,6 @@ declare namespace NodeJS {
         EMAIL_PASS: string;
         SUPABASE_SERVICE_ROLE_KEY: string;
         NEXT_PUBLIC_REDIRECT_URL: string;
+        NEXT_PUBLIC_CONFIRMATION_URL: string;
     }
   }

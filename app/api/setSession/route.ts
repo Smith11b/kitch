@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     cookieOptions
   );
 
-  
+
   const response = NextResponse.json({ success: true }, { status: 200 });
   response.headers.append('Set-Cookie', accessCookie);
   response.headers.append('Set-Cookie', refreshCookie);
