@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/shared/supabaseClient';
 import Button from '@/shared/components/button/Button';
 import styles from './signupForm.module.css'
-import { handleSignupSetup, handleGoogleLogin, handleLogin } from '@/repository/auth/signupLogin';
+import { handleSignupSetup, handleGoogleLogin} from '@/repository/auth/signupLogin';
 import * as yup from 'yup';
 import { signupSchema } from '../validationSchema';
 
