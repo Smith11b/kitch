@@ -3,7 +3,8 @@ import Button from '@/shared/components/button/Button';
 import styles from './loginForm.module.css'
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
-import { supabase } from '@/shared/supabaseClient';
+import { handleLogin } from '@/repository/auth/signupLogin';
+import { handleGoogleLogin } from '@/repository/auth/signupLogin';
 
 
 export default function LoginForm() {
@@ -11,42 +12,6 @@ export default function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    async function handleLogin() {
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-        });
-        if (error) {
-            console.error('Login error:', error.message);
-            return;
-        }
-
-        if (data && data.session) {
-            const { access_token, refresh_token } = data.session;
-            await fetch('/api/setSession', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                credentials: 'include',
-                body: JSON.stringify({ access_token, refresh_token }),
-            });
-
-            router.push('/dashboard');
-        }
-    }
-
-    async function handleGoogleLogin() {
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: 'google',
-            options: {
-                redirectTo: process.env.NEXT_PUBLIC_REDIRECT_URL,
-            },
-        });
-
-        if (error) {
-            console.error('Google sign-in error:', error.message);
-            return;
-        }
-    }
 
 
 
@@ -68,7 +33,7 @@ export default function LoginForm() {
             />
             <Button
                 text="Continue with Email"
-                onClick={() => handleLogin()}
+                onClick={() => handleLogin(email, password, router)}
                 className={styles.loginButton}
                 type="Primary"
             />
