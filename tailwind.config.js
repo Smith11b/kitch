@@ -17,6 +17,8 @@ module.exports = {
     			sm: 'calc(var(--radius) - 4px)'
     		},
     		colors: {
+                'primary-pink':'#E40066',
+                'secondary-blue': '#0E2D3E',
     			background: 'hsl(var(--background))',
     			foreground: 'hsl(var(--foreground))',
     			card: {
@@ -57,7 +59,17 @@ module.exports = {
     				'4': 'hsl(var(--chart-4))',
     				'5': 'hsl(var(--chart-5))'
     			}
-    		}
+    		},
+            keyframes: {
+                wiggle: {
+                  '0%, 100%': { transform: 'translateX(0)' },
+                  '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-10px)' },
+                  '20%, 40%, 60%, 80%': { transform: 'translateX(10px)' },
+                },
+              },
+              animation: {
+                wiggle: 'wiggle 1s ease-in-out',
+              },
     	}
     },
     plugins: [require("tailwindcss-animate")],
