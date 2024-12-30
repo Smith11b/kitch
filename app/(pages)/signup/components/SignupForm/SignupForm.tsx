@@ -2,7 +2,7 @@ import { FocusEvent, useState } from 'react';
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/shared/supabaseClient';
 import Button from '@/shared/components/button/Button';
-import styles from './signupForm.module.css'
+
 import { handleSignupSetup, handleGoogleLogin} from '@/repository/auth/signupLogin';
 import * as yup from 'yup';
 import { signupSchema } from '../validationSchema';
@@ -16,6 +16,7 @@ export default function SignupForm() {
     const [name, setName] = useState('');
     const [company, setCompany] = useState('');
     const [error, setError] = useState('');
+    const [hasError, setHasError] = useState(false);
 
     async function handleSignup() {
         try {
@@ -39,6 +40,10 @@ export default function SignupForm() {
         } catch (validationError) {
             if (validationError instanceof yup.ValidationError) {
                 setError(validationError.message);
+                setHasError(true);
+                setTimeout(() => {
+                    setHasError(false);
+                }, 2000);
             } else {
                 setError('An unexpected error occurred');
             }
@@ -58,9 +63,9 @@ export default function SignupForm() {
 
 
         return (
-            <div className={styles.loginForm}>
+            <div className='max-w-[600px] text-lg'>
                 <input
-                    className={styles.loginInput}
+                    className="border-solid border-2 border-gray-300 rounded-md p-[13px] w-full text-lg mb-8 focus:outline-none"
                     type="text"
                     name="name"
                     placeholder='Your name'
@@ -68,7 +73,7 @@ export default function SignupForm() {
                 />
 
                 <input
-                    className={styles.loginInput}
+                    className="border-solid border-2 border-gray-300 rounded-md p-[13px] w-full text-lg mb-8 focus:outline-none"
                     type="text"
                     name="company"
                     placeholder='Company name'
@@ -77,14 +82,14 @@ export default function SignupForm() {
                 />
 
                 <input
-                    className={styles.loginInput}
+                    className="border-solid border-2 border-gray-300 rounded-md p-[13px] w-full text-lg mb-8 focus:outline-none"
                     type="email"
                     name="email"
                     placeholder='name@example.com'
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
-                    className={styles.loginInput}
+                      className="border-solid border-2 border-gray-300 rounded-md p-[13px] w-full text-lg mb-8 focus:outline-none"
                     type="password"
                     name="password"
                     placeholder='password'
@@ -92,30 +97,28 @@ export default function SignupForm() {
                     onBlur={(e) => handlePasswordBlur(e)}
                 />
                 <input
-                    className={styles.loginInput}
+                    className="border-solid border-2 border-gray-300 rounded-md p-[13px] w-full text-lg mb-8 focus:outline-none"
                     type="password"
                     name="confirm_password"
                     placeholder='confirm password'
                     onChange={(e) => setPasswordConfirm(e.target.value)}
                     onBlur={(e) => handlePasswordBlur(e)}
                 />
-                <p className={styles.error}>{error}</p>
                 <Button
-                    text="Continue with Email"
+                    text={hasError ? error : 'Continue with email'}
                     onClick={() => handleSignup()}
-                    className={styles.loginButton}
+                    className={hasError ? "animate-wiggle" : ""}
                     type="Primary"
                 />
-                <div className={styles.orContainer}>
-                    <span className={styles.orLine}></span>
-                    <span className={styles.orText}>or</span>
-                    <span className={styles.orLine}></span>
-                </div>
+                <div className="flex items-center w-full my-10 ">
+                <span className="flex-1 h-[1px] bg-secondary-blue"></span>
+                <span className="px-2.5 text-secondary-blue">or</span>
+                <span className="flex-1 h-[1px] bg-secondary-blue"></span>
+            </div>
 
                 <Button
                     text="Continue with Google"
                     onClick={() => handleGoogleLogin()}
-                    className={styles.googleButton}
                     type="Google"
                 />
             </div>

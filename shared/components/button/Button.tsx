@@ -23,8 +23,8 @@ export default function Button({ text, onClick, className, type, disabled }: But
         );
     }
     return (
-        <a onClick={onClick} className={`${className} ${styles[type]} ${disabled ? styles.disabled : null} ${styles.Button}`}>
+        <button onClick={onClick} className={`${className} ${styles[type]} ${disabled ? styles.disabled : null} ${styles.Button}`}>
             {text}
-        </a>
+        </button>
     );
 }
