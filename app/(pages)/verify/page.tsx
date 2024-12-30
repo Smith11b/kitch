@@ -1,5 +1,4 @@
 
-import styles from './verify.module.css';
 import Image from 'next/image';
 
 
