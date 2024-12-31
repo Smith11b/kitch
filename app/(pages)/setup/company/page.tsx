@@ -48,7 +48,7 @@ export default function CompanyPage() {
                     <div className="flex flex-col items-center justify-center w-full max-w-[450px]">
                         {logoUploaded ? (
           <div className="relative">
-            <img src={URL.createObjectURL(logo!)} alt="Company Logo" className="w-full h-64 object-contain" />
+            <Image src={URL.createObjectURL(logo!)} alt="Company Logo" className="w-full h-64 object-contain" />
           </div>
         ) : (
           <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer">
