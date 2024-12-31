@@ -7,8 +7,8 @@ import { lightenColor } from "@/utils/colorUtils/colorUtils";
 import Image from "next/image";
 
 export default function CompanyPage() {
-    const [color, setColor] = useColor("#000");
-    const [secondaryColor, setSecondaryColor] = useColor("#000");
+    const [color, setColor] = useColor("#E40066");
+    const [secondaryColor, setSecondaryColor] = useColor("#0E2D3E");
     const [logo, setLogo] = useState<File | null>(null);
     const [logoUploaded, setLogoUploaded] = useState(false);
 
@@ -48,7 +48,7 @@ export default function CompanyPage() {
                     <div className="flex flex-col items-center justify-center w-full max-w-[450px]">
                         {logoUploaded ? (
           <div className="relative">
-            <Image src={URL.createObjectURL(logo!)} alt="Company Logo" className="w-full h-64 object-contain" />
+            <Image src={URL.createObjectURL(logo!)} alt="Company Logo" className="w-full h-64 object-contain" width={450} height={256} />
           </div>
         ) : (
           <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer">
@@ -76,7 +76,7 @@ export default function CompanyPage() {
                     <Button onClick={()=>{}}  text="Continue" type="Primary" className="!w-[90%]" style={{backgroundColor: color.hex}} />
                     </div>
             </div>
-            <div className="flex flex-col items-center justify-center h-screen w-3/5" style={{ backgroundColor: lightenColor(color.hex, 50) }}>
+            <div className="flex flex-col items-center justify-center h-screen w-3/5" style={{ backgroundColor: lightenColor(color.hex, 30) }}>
             <div className="flex flex-col items-center justify-center gap-4 bg-white py-6 rounded-lg shadow-lg w-[80%] max-w-[450px]">
                 <h2 className="text-2xl font-bold">Chicken Teriyaki</h2>
                 <p className="w-[90%]">Delicous grilled chicken put over a silantro base sauce with peppers, olives, and a delicous gause. </p>
