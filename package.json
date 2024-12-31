@@ -11,6 +11,7 @@
         "test:watch": "jest --watch"
     },
     "dependencies": {
+        "@radix-ui/react-popover": "^1.1.4",
         "@radix-ui/react-slot": "^1.1.1",
         "@supabase/ssr": "^0.5.2",
         "@supabase/supabase-js": "^2.47.10",
@@ -22,6 +23,7 @@
         "next": "15.0.4",
         "nodemailer": "^6.9.16",
         "react": "^19.0.0",
+        "react-color-palette": "^7.3.0",
         "react-dom": "^19.0.0",
         "tailwind-merge": "^2.6.0",
         "tailwindcss-animate": "^1.0.7",
