@@ -11,9 +11,10 @@ type ButtonProps = {
     className?: string;
     type: ButtonType;
     disabled?: boolean;
+    style?: React.CSSProperties;
 };
 
-export default function Button({ text, onClick, className, type, disabled }: ButtonProps) {
+export default function Button({ text, onClick, className, type, disabled, style }: ButtonProps) {
     if (type === 'Google') {
         return (
             <button onClick={onClick} className={`${className} ${styles[type]} ${disabled ? styles.disabled : null} ${styles.Button}`}>
@@ -23,7 +24,7 @@ export default function Button({ text, onClick, className, type, disabled }: But
         );
     }
     return (
-        <button onClick={onClick} className={`${className} ${styles[type]} ${disabled ? styles.disabled : null} ${styles.Button}`}>
+        <button onClick={onClick} className={`${className} ${styles[type]} ${disabled ? styles.disabled : null} ${styles.Button}`} style={style}>
             {text}
         </button>
     );
