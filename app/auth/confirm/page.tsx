@@ -30,8 +30,7 @@ export default function ConfirmPage() {
               refresh_token,
             }),
           });
-
-        router.push('/dashboard');
+        router.push('/setup/company');
         }
         handleAuthCallback();
       }, [router]);
