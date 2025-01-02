@@ -13,7 +13,7 @@ interface PasswordInputProps extends React.ComponentProps<"input"> {
 }
 
 const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
-  ({ className, type, value, onChange, label = "Password", ...props }, ref) => {
+  ({ value, onChange, label = "Password", ...props }, ref) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const toggleVisibility = () => setIsVisible((prevState) => !prevState);
@@ -49,7 +49,9 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
       </div>
     </div>
   )
+
+  PasswordInput.displayName = "PasswordInput"
   }
 )
-Input.displayName = "Input"
+
 export { PasswordInput }

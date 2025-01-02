@@ -1,7 +1,6 @@
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { MailCheck } from 'lucide-react';
-import Image from 'next/image';
 
 
 export default function VerifyPage() {

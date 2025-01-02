@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Mail } from "lucide-react";
 
 const EmailInput = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
-  ({ className, type, ...props }, ref) => {
+  ({ ...props }, ref) => {
   return (
     <div className="space-y-2">
       <Label htmlFor="input-10">Email</Label>
@@ -19,7 +19,8 @@ const EmailInput = React.forwardRef<HTMLInputElement, React.ComponentProps<"inpu
       </div>
     </div>
    )
+   EmailInput.displayName = "PasswordInput"
 }
 )
-Input.displayName = "Input"
+
 export { EmailInput }
