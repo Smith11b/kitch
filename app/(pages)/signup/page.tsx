@@ -1,24 +1,32 @@
-'use client';
-import SlideTransition from '@/shared/transitions/SlideTransition';
-import Image from 'next/image';
-import SignupForm from './components/SignupForm/SignupForm';
+import Image from "next/image"
 
-
+import { SignupForm } from "@/components/signup-form"
 
 export default function SignupPage() {
-
     return (
-        <div className="flex flex-col items-center justify-center h-screen text-secondary-blue">
-            <SlideTransition direction="right" isVisible={true}>
-            <Image className="mb-10" src={'/images/logo pink.png'} alt="Kitch Logo" width={80} height={50} />
-                <div className="flex flex-col items-center justify center w-[80%]">
-                <h1 className="font-extrabold text-5xl text-center mb-2">Get Started Today</h1>
-                <p className='text-lg pt-2 mb-8'>Sign up now to start saving time on you meal prep company</p>
-                <SignupForm />
-                <p className="mt-3">Already have an account?? <a className="text-primary-pink font-semibold" href="/login">Sign in</a></p>
-                </div>
-            </SlideTransition>
+        <div className="grid min-h-svh lg:grid-cols-2">
+            <div className="flex flex-col gap-4 p-6 md:p-10">
+                <div className="flex justify-center gap-2 md:justify-start">
+                    <a href="#" className="flex items-center gap-2 font-medium">
+                        <div className="flex h-24 w-24 items-center justify-center text-primary-foreground">
+                            <Image src="/images/kitch.png" alt="Logo" width={80} height={80} />
+                        </div>
 
+                    </a>
+                </div>
+                <div className="flex flex-1 items-center justify-center">
+                    <div className="w-full max-w-xs">
+                        <SignupForm />
+                    </div>
+                </div>
+            </div>
+            <div className="relative hidden bg-muted lg:block">
+                <img
+                    src="/images/meal-prep.jpg"
+                    alt="Image"
+                    className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+                />
+            </div>
         </div>
-    );
+    )
 }
