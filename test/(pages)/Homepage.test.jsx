@@ -1,7 +1,7 @@
 
 import '@testing-library/jest-dom';
 import { render, screen, } from '@testing-library/react';
-import Homepage from './page.tsx';
+import Homepage from '../../app/page.tsx';
 import { describe } from 'node:test';
 
 describe('Homepage', () => {

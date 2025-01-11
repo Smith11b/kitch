@@ -27,6 +27,7 @@
     -webkit-font-smoothing: antialiased;
     height: 100vh;
     font-family: 'Poppins', sans-serif;
+
   }
 
   .root-container {
@@ -34,6 +35,7 @@
     flex-direction: column;
     min-height: 100vh;
   }
+
 
   /* 5. Improve media defaults */
   img, picture, video, canvas, svg {

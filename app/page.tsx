@@ -1,5 +1,5 @@
 
-import EmailForm from "./components/EmailForm";
+import EmailForm from "./email-form";
 import styles from "./page.module.css";
 import Image from 'next/image';
 

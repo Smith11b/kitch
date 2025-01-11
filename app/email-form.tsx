@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
-import styles from "../page.module.css";
+import styles from "./page.module.css";
+import landerService from './service/landerService/landerService';
 
 export default function EmailForm() {
   const [email, setEmail] = useState('');
@@ -14,38 +15,28 @@ export default function EmailForm() {
 
   const handleLinkClick = async (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
-    if (!validateEmail(email)) {
+    if (!landerService.validateEmail(email)) {
         setInvalid(true);
         setTimeout(() => {
             setInvalid(false);
           }, 2000);
         return;
       }
-    try {
-      const response = await fetch('/api/email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
 
-      if (!response.ok) {
-        throw new Error('Failed to submit email');
+      try {
+        await landerService.saveEmailAddress(email);
+        setSubmitted(true);
+      } catch (error) {
+        console.error('Error saving email:', error);
+        setInvalid(true);
+        setTimeout(() => {
+            setInvalid(false);
+          }, 2000);
       }
-
-      const data = await response.json();
-      console.log('Email submitted successfully:', data);
-      setSubmitted(true); // Change the state to submitted
-    } catch (error) {
-      console.error('Error submitting email:', error);
     }
-  };
 
-  const validateEmail = (email: string) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-  };
+
+
 
   return (
     <div className={`${styles.cta} ${submitted ? styles.submitted : ''} ${invalid ? styles.invalid : ''}`}>

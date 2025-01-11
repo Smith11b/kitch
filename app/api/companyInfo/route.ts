@@ -1,11 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import emailService from "../service/emailService";
+import companyService from "../service/companyService";
+
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
-        const { email } = req.body;
-        return emailService.subscribe(email);
+        const { name, address, website, primaryColor, secondaryColor } = req.body;
+       return companyService.saveCompanyInfo(name, address, website, primaryColor, secondaryColor);
     } else {
       res.setHeader('Allow', ['POST']);
       res.status(405).end(`Method ${req.method} Not Allowed`);

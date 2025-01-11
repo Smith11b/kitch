@@ -1,4 +1,4 @@
-import { supabase } from "@/shared/supabaseClient";
+import { supabase } from "@/lib/supabaseClient";
 import { User } from "@supabase/supabase-js";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
