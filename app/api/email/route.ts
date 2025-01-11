@@ -1,14 +1,11 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import emailService from "../service/emailService";
+import { NextResponse } from "next/server";
+import emailService from "@/app/api/service/emailService";
 
+export async function POST(request: Request) {
+    const { email } = await request.json();
+    return emailService.subscribe(email);
+}
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method === 'POST') {
-        const { email } = req.body;
-        return emailService.subscribe(email);
-    } else {
-      res.setHeader('Allow', ['POST']);
-      res.status(405).end(`Method ${req.method} Not Allowed`);
-      return res;
-    }
-  }
+export function OPTIONS() {
+    return NextResponse.json({}, { status: 200, headers: { Allow: "POST" } });
+}

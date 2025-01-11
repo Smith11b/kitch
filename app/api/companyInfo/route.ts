@@ -1,15 +1,11 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 import companyService from "../service/companyService";
 
+export async function POST(request: Request) {
+    const { name, address, website, primaryColor, secondaryColor } = await request.json();
+    return companyService.saveCompanyInfo(name, address, website, primaryColor, secondaryColor);
+}
 
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method === 'POST') {
-        const { name, address, website, primaryColor, secondaryColor } = req.body;
-       return companyService.saveCompanyInfo(name, address, website, primaryColor, secondaryColor);
-    } else {
-      res.setHeader('Allow', ['POST']);
-      res.status(405).end(`Method ${req.method} Not Allowed`);
-      return res;
-    }
-  }
+export function OPTIONS() {
+    return NextResponse.json({}, { status: 200, headers: { Allow: "POST" } });
+}
