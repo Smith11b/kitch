@@ -3,7 +3,7 @@ import companyService from "../service/companyService";
 
 export async function POST(request: Request) {
     const { name, address, website, primaryColor, secondaryColor } = await request.json();
-    return companyService.saveCompanyInfo(name, address, website, primaryColor, secondaryColor);
+    return NextResponse.json(companyService.saveCompanyInfo(name, address, website, primaryColor, secondaryColor,));
 }
 
 export function OPTIONS() {
