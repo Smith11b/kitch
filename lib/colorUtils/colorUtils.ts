@@ -38,6 +38,5 @@ export function lightenColor(hexColor: string, amount: number) {
           }
         }
       }
-      console.log(`Color not found for property: ${property}`);
       return null;
     }

@@ -7,6 +7,14 @@ import landerService from '../../app/service/landerService/landerService';
 jest.mock('@/app/service/landerService/landerService');
 
 describe('EmailForm', () => {
+    beforeAll(() => {
+        jest.spyOn(console, 'error').mockImplementation(() => {}); // Suppress console errors
+      });
+
+      afterAll(() => {
+        console.error.mockRestore(); // Restore console errors
+      });
+
   beforeEach(() => {
     jest.clearAllMocks();
     jest.useFakeTimers();
