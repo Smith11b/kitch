@@ -31,7 +31,6 @@ export function CompanyForm({ companyData, onInputChange, onLogoUpload }: Compan
     }
 
     const urlPattern = new RegExp(/\b(https?:\/\/|www\.)[\w\-]+(\.[\w\-]+)+(:\d+)?(\/[\w\-.,@?^=%&:/~+#]*)?\b/)
-      console.log(urlPattern.test(e.target.value))
 
     if (!urlPattern.test(e.target.value)) {
 

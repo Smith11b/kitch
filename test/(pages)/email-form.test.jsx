@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EmailForm from '@/app/email-form';
 import landerService from '../../app/service/landerService/landerService';
@@ -36,7 +36,9 @@ describe('EmailForm', () => {
       expect(screen.getByText('Invalid email')).toBeInTheDocument();
     });
 
-    jest.advanceTimersByTime(2000);
+    act(() => {
+      jest.advanceTimersByTime(2000);
+    });
 
     await waitFor(() => {
       expect(screen.getByText('Join the waitlist')).toBeInTheDocument();
@@ -90,7 +92,9 @@ describe('EmailForm', () => {
       expect(screen.getByText('Join the waitlist')).toBeInTheDocument();
     });
 
-    jest.advanceTimersByTime(2000);
+    act(() => {
+      jest.advanceTimersByTime(2000);
+    });
 
     await waitFor(() => {
       expect(screen.getByText('Join the waitlist')).toBeInTheDocument();

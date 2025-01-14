@@ -1,6 +1,8 @@
 
 import fetch from 'node-fetch';
 import * as colorService from '@/app/service/colorService/colors';
+import { extractColor, rgbToHex } from '@/lib/colorUtils/colorUtils';
+
 
 jest.mock('node-fetch', () => jest.fn());
 const mockedFetch = fetch as jest.Mock;
@@ -12,27 +14,27 @@ jest.mock('sharp', () => () => ({
 
 describe('rgbToHex', () => {
   it('should convert RGB values to hex correctly', () => {
-    expect(colorService.rgbToHex(255, 255, 255)).toBe('#ffffff');
-    expect(colorService.rgbToHex(0, 0, 0)).toBe('#000000');
-    expect(colorService.rgbToHex(255, 0, 0)).toBe('#ff0000');
+    expect(rgbToHex(255, 255, 255)).toBe('#ffffff');
+    expect(rgbToHex(0, 0, 0)).toBe('#000000');
+    expect(rgbToHex(255, 0, 0)).toBe('#ff0000');
   });
 });
 
 describe('extractColor', () => {
   it('should extract hex colors from style attribute', () => {
     const style = 'background-color: #ff0000; color: #00ff00;';
-    expect(colorService.extractColor(style, 'background-color')).toBe('#ff0000');
-    expect(colorService.extractColor(style, 'color')).toBe('#00ff00');
+    expect(extractColor(style, 'background-color')).toBe('#ff0000');
+    expect(extractColor(style, 'color')).toBe('#00ff00');
   });
 
   it('should extract RGB colors from style and convert to hex', () => {
     const style = 'background-color: rgb(0, 255, 0);';
-    expect(colorService.extractColor(style, 'background-color')).toBe('#00ff00');
+    expect(extractColor(style, 'background-color')).toBe('#00ff00');
   });
 
   it('should return null if the color is not found', () => {
     const style = 'border-color: #0000ff;';
-    expect(colorService.extractColor(style, 'background-color')).toBeNull();
+    expect(extractColor(style, 'background-color')).toBeNull();
   });
 });
 
