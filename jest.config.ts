@@ -32,9 +32,15 @@ const config: Config.InitialOptions = {
     "!**/node_modules/**", // Exclude node_modules
     "!**/.next/**", // Exclude Next.js build folder
   ],
-
-
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80,
+    },
+  },
+  coverageReporters: ["json", "lcov", "text", "clover"],
 };
 
-// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
 export default createJestConfig(config);
