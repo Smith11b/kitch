@@ -4,27 +4,30 @@ import { parse } from 'node-html-parser';
 import fetch from 'node-fetch';
 import sharp from 'sharp';
 
-function rgbToHex(r: number, g: number, b: number): string {
+export function rgbToHex(r: number, g: number, b: number): string {
   return '#' + [r, g, b].map(x => {
     const hex = x.toString(16);
     return hex.length === 1 ? '0' + hex : hex;
   }).join('');
 }
 
-function extractColor(style: string | null, property: string): string | null {
-  const match = style?.match(new RegExp(`${property}:\\s*(#[0-9A-Fa-f]{6}|rgb\$$\\d+,\\s*\\d+,\\s*\\d+\$$)`));
-  if (match) {
-    if (match[1].startsWith('#')) {
-      return match[1];
-    } else {
-      const rgb = match[1].match(/\d+/g);
-      if (rgb && rgb.length === 3) {
-        return rgbToHex(parseInt(rgb[0]), parseInt(rgb[1]), parseInt(rgb[2]));
+export function extractColor(style: string | null, property: string): string | null {
+    const match = style?.match(new RegExp(`(?:^|;)\\s*${property}:\\s*(#[0-9A-Fa-f]{3,6}|rgba?\\(\\s*\\d+\\s*,\\s*\\d+\\s*,\\s*\\d+(?:,\\s*\\d*\\.?\\d+)?\\s*\\))`, 'i'));
+    if (match) {
+      const colorValue = match[1];
+      if (colorValue.startsWith('#')) {
+        return colorValue; // Return hex color directly
+      } else {
+        const rgb = colorValue.match(/\d+/g);
+        if (rgb && rgb.length >= 3) {
+          return rgbToHex(parseInt(rgb[0]), parseInt(rgb[1]), parseInt(rgb[2]));
+        }
       }
     }
+    console.log(`Color not found for property: ${property}`);
+    return null;
   }
-  return null;
-}
+
 
 export async function getColorsFromWebsite(url: string) {
   try {
@@ -55,19 +58,18 @@ export async function getColorsFromWebsite(url: string) {
       .map(img => img.getAttribute('src'))
       .filter(Boolean)
       .map(src => src && new URL(src, url).href);
-
     // Get colors from images
     const imageColors = await Promise.all(
       imageUrls.slice(0, 5).map(async imageUrl => {
         try {
-          if (!imageUrl) {
-            throw new Error('Image URL is undefined');
+            console.log(imageUrl);
+          if (imageUrl) {
+              const response = await fetch(imageUrl);
+              const arrayBuffer = await response.arrayBuffer();
+              const buffer = Buffer.from(arrayBuffer);
+              const { dominant } = await sharp(buffer).stats();
+              return rgbToHex(dominant.r, dominant.g, dominant.b);
           }
-          const response = await fetch(imageUrl);
-          const arrayBuffer = await response.arrayBuffer();
-          const buffer = Buffer.from(arrayBuffer);
-          const { dominant } = await sharp(buffer).stats();
-          return rgbToHex(dominant.r, dominant.g, dominant.b);
         } catch (error) {
           console.error(`Failed to get color from image: ${imageUrl}`, error);
           return null;

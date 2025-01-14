@@ -7,7 +7,7 @@ import { EmailInput } from "./ui/emaiInput"
 import { PasswordInput } from "./ui/passwordInput"
 import { Input } from "./ui/input"
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/config/supabaseClient";
 import { handleGoogleLogin, handleSignupSetup } from "@/repository/auth/signupLogin";
 import { useRouter } from "next/navigation";
 import Image from "next/image";

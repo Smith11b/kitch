@@ -1,5 +1,5 @@
 
-import { createClient } from "@/lib/supabaseServerClient";
+import { createClient } from "@/config/supabaseServerClient";
 
 
 const companyService = {
@@ -7,7 +7,7 @@ const companyService = {
    if(!name || !address || !website || !primaryColor || !secondaryColor) {
         return { error: 'Company information is required', status: 400 };
    }
-   
+
    const supabase = await createClient();
    try {
          const { data, error } = await supabase

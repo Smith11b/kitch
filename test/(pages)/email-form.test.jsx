@@ -4,18 +4,43 @@ import '@testing-library/jest-dom';
 import EmailForm from '@/app/email-form';
 import landerService from '../../app/service/landerService/landerService';
 
-// Mock the landerService module
 jest.mock('@/app/service/landerService/landerService');
 
 describe('EmailForm', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   test('renders the form with initial state', () => {
     render(<EmailForm />);
     expect(screen.getByPlaceholderText('Enter your email')).toBeInTheDocument();
     expect(screen.getByText('Join the waitlist')).toBeInTheDocument();
+  });
+
+  test('sets invalid state back to false after 2000ms', async () => {
+    landerService.validateEmail.mockReturnValueOnce(false);
+
+    render(<EmailForm />);
+    const input = screen.getByPlaceholderText('Enter your email');
+    const button = screen.getByText('Join the waitlist');
+
+    fireEvent.change(input, { target: { value: 'invalid-email' } });
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(screen.getByText('Invalid email')).toBeInTheDocument();
+    });
+
+    jest.advanceTimersByTime(2000);
+
+    await waitFor(() => {
+      expect(screen.getByText('Join the waitlist')).toBeInTheDocument();
+    });
   });
 
   test('shows invalid email message when email is invalid', async () => {
@@ -60,6 +85,12 @@ describe('EmailForm', () => {
 
     fireEvent.change(input, { target: { value: 'test@example.com' } });
     fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(screen.getByText('Join the waitlist')).toBeInTheDocument();
+    });
+
+    jest.advanceTimersByTime(2000);
 
     await waitFor(() => {
       expect(screen.getByText('Join the waitlist')).toBeInTheDocument();
