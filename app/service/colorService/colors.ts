@@ -39,7 +39,6 @@ export async function getColorsFromWebsite(url: string) {
     const imageColors = await Promise.all(
       imageUrls.slice(0, 5).map(async imageUrl => {
         try {
-            console.log(imageUrl);
           if (imageUrl) {
               const response = await fetch(imageUrl);
               const arrayBuffer = await response.arrayBuffer();

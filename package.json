@@ -8,7 +8,9 @@
         "start": "next start",
         "lint": "next lint",
         "test": "jest",
-        "test:watch": "jest --watch"
+        "test:watch": "jest --watch",
+        "test:ci": "NODE_ENV=test jest --coverage",
+        "build:prod": "NODE_ENV=production next build"
     },
     "dependencies": {
         "@radix-ui/react-label": "^2.1.1",

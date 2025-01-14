@@ -3,6 +3,14 @@ import landerService from "@/app/service/landerService/landerService";
 global.fetch = jest.fn(); // Mock the global fetch API
 
 describe('landerService', () => {
+    beforeAll(() => {
+        jest.spyOn(console, 'error').mockImplementation(() => {}); // Suppress console errors
+      });
+
+      afterAll(() => {
+        (console.error as unknown as jest.MockInstance<void, unknown[]>).mockRestore(); // Restore console errors
+      });
+      
   beforeEach(() => {
     jest.clearAllMocks(); // Clear mocks between tests
   });

@@ -1,4 +1,3 @@
-
 import fetch from 'node-fetch';
 import * as colorService from '@/app/service/colorService/colors';
 import { extractColor, rgbToHex } from '@/lib/colorUtils/colorUtils';
@@ -12,7 +11,16 @@ jest.mock('sharp', () => () => ({
   stats: jest.fn().mockResolvedValue({ dominant: { r: 255, g: 255, b: 255 } }),
 }));
 
-describe('rgbToHex', () => {
+describe("color Service", () => {
+    beforeAll(() => {
+        jest.spyOn(console, 'error').mockImplementation(() => {}); // Suppress console errors
+      });
+
+      afterAll(() => {
+        (console.error as unknown as jest.MockInstance<void, unknown[]>).mockRestore(); // Restore console errors
+      });
+
+    describe('rgbToHex', () => {
   it('should convert RGB values to hex correctly', () => {
     expect(rgbToHex(255, 255, 255)).toBe('#ffffff');
     expect(rgbToHex(0, 0, 0)).toBe('#000000');
@@ -176,4 +184,5 @@ describe('getColorsFromWebsite', () => {
   });
 
 
+});
 });

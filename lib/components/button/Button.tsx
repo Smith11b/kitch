@@ -17,14 +17,14 @@ type ButtonProps = {
 export default function Button({ text, onClick, className, type, disabled, style }: ButtonProps) {
     if (type === 'Google') {
         return (
-            <button onClick={onClick} className={`${className} ${styles[type]} ${disabled ? styles.disabled : null} ${styles.Button}`}>
+            <button onClick={onClick} className={`${className} ${styles[type]} ${styles.Button} ${disabled ? styles.disabled : null}` } disabled={disabled} style={style}>
                 <Image src="/images/googlelogo.png" alt="Google Logo" width={35} height={20}  />
                 {text}
             </button>
         );
     }
     return (
-        <button onClick={onClick} className={`${className} ${styles[type]} ${disabled ? styles.disabled : null} ${styles.Button}`} style={style}>
+        <button onClick={onClick} className={`${className} ${styles[type]} ${disabled ? styles.disabled : null} ${styles.Button}`} style={style} disabled={disabled}>
             {text}
         </button>
     );
