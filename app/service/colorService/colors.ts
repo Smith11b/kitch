@@ -1,4 +1,3 @@
-'use server'
 
 import { parse } from 'node-html-parser';
 import fetch from 'node-fetch';
