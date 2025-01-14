@@ -1,4 +1,4 @@
-import { createClient } from "@/shared/supabaseServerClient";
+import { createClient } from "@/config/supabaseServerClient";
 
 
 

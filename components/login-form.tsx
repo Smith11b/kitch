@@ -6,9 +6,10 @@ import Image from 'next/image';
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import {  EmailInput } from "./ui/emaiInput";
+import { EmailInput } from "./ui/emaiInput";
 import { PasswordInput } from "./ui/passwordInput";
 import { handleGoogleLogin, handleLogin } from '@/repository/auth/signupLogin';
+import Link from "next/link";
 
 export function LoginForm({
     className,
@@ -52,7 +53,7 @@ export function LoginForm({
             return;
         }
 
-        if(password.length < 6) {
+        if (password.length < 6) {
             toast({
                 title: 'Error',
                 description: "Password must be at least 6 characters",
@@ -61,8 +62,8 @@ export function LoginForm({
             return;
         }
 
-    await handleLogin(email, password, router, toast);
-}
+        await handleLogin(email, password, router, toast);
+    }
 
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -107,9 +108,9 @@ export function LoginForm({
                             </div>
                             <div className="text-center text-sm">
                                 Don&apos;t have an account?{" "}
-                                <a href="/signup" className="underline underline-offset-4">
+                                <Link href="/signup" className="underline underline-offset-4">
                                     Sign up
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </form>

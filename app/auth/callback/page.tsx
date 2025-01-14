@@ -2,37 +2,37 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/shared/supabaseClient';
+import { supabase } from '@/config/supabaseClient';
 
 export default function GoogleCallbackPage() {
-  const router = useRouter();
+    const router = useRouter();
 
-  useEffect(() => {
-    async function handleAuthCallback() {
-      const { data, error } = await supabase.auth.getSession();
+    useEffect(() => {
+        async function handleAuthCallback() {
+            const { data, error } = await supabase.auth.getSession();
 
-      if (error || !data.session) {
-        console.error('Callback error or no session:', error);
-        router.replace('/login');
-        return;
-      }
+            if (error || !data.session) {
+                console.error('Callback error or no session:', error);
+                router.replace('/login');
+                return;
+            }
 
-      const { access_token, refresh_token } = data.session;
+            const { access_token, refresh_token } = data.session;
 
-      await fetch('/api/setSession', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({
-          access_token,
-          refresh_token,
-        }),
-      });
+            await fetch('/api/setSession', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({
+                    access_token,
+                    refresh_token,
+                }),
+            });
 
-      router.push('/dashboard');
-    }
-    handleAuthCallback();
-  }, [router]);
+            router.push('/dashboard');
+        }
+        handleAuthCallback();
+    }, [router]);
 
-  return <p>Finishing Google login...</p>;
+    return <p>Finishing Google login...</p>;
 }
