@@ -3,9 +3,7 @@
 import { parse } from 'node-html-parser';
 import fetch from 'node-fetch';
 import sharp from 'sharp';
-import { extractColor } from '@/lib/colorUtils/colorUtils';
-
-
+import { extractColor, rgbToHex } from '@/lib/colorUtils/colorUtils';
 
 
 export async function getColorsFromWebsite(url: string) {
