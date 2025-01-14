@@ -1,6 +1,6 @@
 import { createClient } from "@/config/supabaseServerClient";
-
-
+import { TableNames } from "@/lib/enums/TableNames";
+import { ProfileUpdate } from "@/types/database-models";
 
 export async function POST(request: Request) {
     const supabase  = await createClient();
@@ -12,11 +12,11 @@ export async function POST(request: Request) {
     }
 
     console.log('updating profile name and email for', userId);
-    const { error: updateError } = await supabase.from('profiles').update({
-        id: userId,
-        full_name: name,
-        email: email,
-    }).eq('id', userId);
+    const { error: updateError } = await supabase
+    .from(TableNames.profiles)
+    .update<ProfileUpdate>({ full_name: name,
+        email })
+    .eq('id', userId); // Match by ID
 
     if (updateError) {
         console.error('Profile update error:', updateError.message);
