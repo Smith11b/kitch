@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Kitch",
-  description: "Software for meal prep companies",
+  description: "Software for meal prep businesses",
 };
 
 export default function RootLayout({
